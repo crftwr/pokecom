@@ -23,6 +23,7 @@ PuttyやTeratermで通信可能
 
 キーのチェック方法メモ
 
-key(0x0820) : Space
-key(0x1080) : Enter
+	key(0x0820) : Space
+	key(0x1080) : Enter
 
+	http://www.akiyan.com/pc-g850_technical_data
