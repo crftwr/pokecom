@@ -1,16 +1,31 @@
 10 #include "util.c"
 20 #include "actor.c"
 30
-40 char * jiki_img="1C98D0747C381010";
+40 char * jiki_img="4429BA7C38181010";
+45 char * tama_img="1010101010000000";
 50 char * baku_img="4415C83A5C13A822";
 60 char * teki_img="0034343C34141018";
 70
 80  struct actor jiki;
+85  struct actor tama;
 90  #define teki_num 3
 100  struct actor teki[teki_num];
 110
+111 void tama_update(struct actor * self){
+112  struct actor * teki_hit;
+113  if(self->x>136<<4){self->alive=0;}
+114  teki_hit = actor_hittest(self,teki,teki_num,5<<4);
+115  if(teki_hit){ teki_hit->img=baku_img; actor_draw(teki_hit,1); teki_hit->alive=0; self->alive=0; }
+119 }
 120 void jiki_update(struct actor * self){
 130  if(key(0x0820)){self->yy-=4;}
+131  if(key(0x1080)){
+132   actor_create(&tama);
+133   tama.x=jiki.x; tama.xx=4<<4;
+134   tama.y=jiki.y;
+135   tama.img=tama_img;
+136   tama.update=tama_update;
+137  }
 140  self->yy+=2;
 150  self->xx+=2;
 160  self->xx=self->xx*90/100;
@@ -52,7 +67,9 @@
 520  line(0,46,127,46,0,0x3333,0);
 530  line(0,47,127,47,0,0xCCCC,0);
 540  for(;;){
+550   actor_update(&tama,1);
 550   actor_update(&jiki,1);
+560   actor_draw(&tama,1);
 560   actor_draw(&jiki,1);
 570   line(100,43,120,43,0,0xffff,0);
 580   if(jiki.alive==0){

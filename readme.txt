@@ -19,4 +19,10 @@ PuttyやTeratermで通信可能
     end of file = 1A
     line number = yes
     flow        = RS/CS 
-    
+
+
+キーのチェック方法メモ
+
+key(0x0820) : Space
+key(0x1080) : Enter
+
