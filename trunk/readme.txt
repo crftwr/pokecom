@@ -17,7 +17,7 @@ Putty‚âTeraterm‚Å’ÊM‰Â”\
     parity      = none
     end of line = CR LF
     end of file = 1A
-    line number = yes
+    line number = no
     flow        = RS/CS 
 
 
